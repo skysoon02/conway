@@ -12,6 +12,7 @@ function ReaderBoard() {
       setRules(response.data.data);
     })();
     console.log(rules);
+    console.log(window.location.search);
   }, [update]);
 
 
@@ -31,7 +32,8 @@ function ReaderBoard() {
           <tr>
             <td>{rule.username}</td>
             <td>{rule.ruletitle}</td>
-            <td><a href={'http://13.124.69.102:5002/cs473_life?rule='+rule.link+'&username='+rule.username}>{rule.link}</a></td>
+            {console.log}
+            <td><a href={'http://13.124.69.102:5002/cs473_life?rule='+rule.link+'&'+window.location.search.substring(1)}>{rule.link}</a></td>
             <td>{rule.score}</td>
             <td><button
               onClick={()=>{axios.get('http://13.124.69.102:5002/upvote?rule='+rule.link+'&username='+rule.username);setUpdate(update+1)}}
